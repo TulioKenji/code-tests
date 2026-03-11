@@ -1,0 +1,65 @@
+@import "tailwindcss";
+
+:root {
+  --background: #DDDDDD;
+  --foreground: #171717;
+  --primary: #7695EC;
+  --text-secondary: #999999;
+  --input-border: #777777;
+  --text-input: #CCCCCC;
+  --card-border: #CCCCCC;
+  --button-border: #999999;
+  --success: #47B960;
+  --error: #FF5151;
+   --disabled: #CCCCCC;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-primary: var(--primary);
+  --color-text-secondary: var(--text-secondary);
+  --color-input-border: var(--input-border);
+  --color-text-input: var(--text-input);
+  --color-card-border: var(--card-border);
+  --color-button-border: var(--button-border);
+  --color-success: var(--success);
+  --color-error: var(--error);
+  --color-disabled: var(--disabled);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background: #DDDDDD;
+    --foreground: #171717;
+    --primary: #7695EC;
+    --text-secondary: #999999;
+    --input-border: #777777;
+    --card-border: ##CCCCCC;
+    --text-input: #CCCCCC;
+    --button-border: #999999;
+    --success: #47B960;
+    --error: #FF5151;
+    --disabled: #CCCCCC;
+  }
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-roboto);
+}
+
+@layer base {
+  h1 {
+    @apply text-[22px] font-bold;
+  }
+
+  p {
+    @apply text-[18px] font-normal;
+  }
+
+  label {
+    @apply text-[16px] font-normal;
+  }
+}
