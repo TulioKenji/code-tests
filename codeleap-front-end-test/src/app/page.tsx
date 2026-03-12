@@ -1,8 +1,9 @@
 import SignupPageComponent from "@/components/pages/signup";
-import Image from "next/image";
 import { redirect } from "next/navigation";
+import { cookies } from "next/headers";
 
-export default function Home() {
+export default async function Home() {
+
   return (
     <main className="flex h-dvh items-center justify-center">
       <SignupPageComponent />

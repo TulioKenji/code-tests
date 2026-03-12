@@ -8,7 +8,7 @@ export default function ButtonRoot({ children, className, ...props }: ButtonRoot
     return (
         <button
             {...props}
-            className={'text-[16px] font-bold disabled:bg-disabled disabled:text-black cursor-pointer rounded-lg border border-button-border transition-all duration-500 active:scale-95' + ' ' + className}
+            className={'text-[16px] font-bold disabled:bg-disabled disabled:cursor-not-allowed cursor-pointer rounded-lg border border-button-border transition-all duration-500 active:scale-95' + (' ' + className || '')}
         >
             {children}
         </button>

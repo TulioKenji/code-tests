@@ -35,7 +35,7 @@
     --primary: #7695EC;
     --text-secondary: #999999;
     --input-border: #777777;
-    --card-border: ##CCCCCC;
+    --card-border: #CCCCCC;
     --text-input: #CCCCCC;
     --button-border: #999999;
     --success: #47B960;
@@ -52,14 +52,11 @@ body {
 
 @layer base {
   h1 {
-    @apply text-[22px] font-bold;
+    @apply text-[22px] font-bold text-black;
   }
 
   p {
-    @apply text-[18px] font-normal;
+    @apply text-[18px] font-normal text-black;
   }
 
-  label {
-    @apply text-[16px] font-normal;
-  }
 }

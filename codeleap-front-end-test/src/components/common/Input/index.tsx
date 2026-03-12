@@ -8,7 +8,7 @@ export default function Input({ className, ...props }: InputProps) {
     return (
         <input
             {...props} 
-            className={'rounded-lg border border-input-border placeholder:text-text-input py-2 px-3 '+ ' ' + className}
+            className={'w-full rounded-lg border border-input-border placeholder:text-text-input py-2 px-3 focus:outline-input-border'+ (' ' + className || '')}
         />
     )
 }
