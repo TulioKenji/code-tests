@@ -1,6 +1,6 @@
 'use client';
 
-interface ButtonRootProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
+export interface ButtonRootProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
     children: React.ReactNode;
 }
 

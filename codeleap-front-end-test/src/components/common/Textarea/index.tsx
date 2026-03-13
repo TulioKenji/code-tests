@@ -1,13 +1,12 @@
 'use client';
 
-interface InputProps extends React.InputHTMLAttributes<HTMLInputElement> {
-}
+interface TextareaProps extends React.TextareaHTMLAttributes<HTMLTextAreaElement>{}
 
-export default function Input({ className, ...props }: InputProps) {
+export default function Textarea({className, ...props}: TextareaProps) {
     return (
-        <input
+        <textarea
             {...props} 
             className={'w-full rounded-lg border border-input-border placeholder:text-text-input py-2 px-3 focus:outline-input-border'+ (' ' + className || '')}
         />
-    )
+    );
 }

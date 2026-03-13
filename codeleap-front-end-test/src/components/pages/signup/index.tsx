@@ -1,5 +1,4 @@
 'use client';
-import ButtonRoot from "@/components/common/Button/Root";
 import Input from "@/components/common/Input";
 import Label from "@/components/common/Label";
 
@@ -10,6 +9,7 @@ import { useState } from "react";
 import { useRouter } from "next/navigation";
 
 import { useMutation } from "@tanstack/react-query";
+import ButtonSubmit from "@/components/common/Button/Submit";
 
 
 export default function SignupPageComponent() {
@@ -36,13 +36,13 @@ export default function SignupPageComponent() {
                     onChange={(e) => setUsername(e.target.value)}
                 />
             </div>
-            <ButtonRoot
+            <ButtonSubmit
                 disabled={!username.trim() || mutation.isPending}
                 className="bg-primary w-27.75 h-8 text-white self-end"
                 onClick={handleSubmit}
             >
                 ENTER
-            </ButtonRoot>
+            </ButtonSubmit>
         </div>
     );
 }
