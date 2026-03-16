@@ -23,8 +23,16 @@ export default function SignupPageComponent() {
         mutation.mutateAsync({ username });
     }
 
+    const disableSubmit = !username.trim() || mutation.isPending;
+
     return (
-        <div className="flex flex-col items-start gap-4 bg-white w-125 h-51.25 border rounded-2xl py-4 px-6 border-card-border">
+        <div 
+        onKeyDown={(e)=>{
+            if(e.key === "Enter" && !disableSubmit){
+                handleSubmit();
+            }
+        }}
+        className="flex flex-col items-start gap-4 bg-white w-11/12 lg:w-125 h-51.25 border rounded-2xl py-4 px-6 border-card-border">
             <h1>Welcome to Codeleap Network!</h1>
             <div className="flex flex-col gap-1 w-full">
                 <Label htmlFor="username">Please enter your username</Label>
@@ -37,7 +45,7 @@ export default function SignupPageComponent() {
                 />
             </div>
             <ButtonSubmit
-                disabled={!username.trim() || mutation.isPending}
+                disabled={disableSubmit}
                 className="bg-primary w-27.75 h-8 text-white self-end"
                 onClick={handleSubmit}
             >

@@ -13,20 +13,27 @@ interface ButtonProps {
 }
 
 interface CardSubmitProps {
+    className?: string;
     title: string;
     actionButtonProps: ButtonProps;
     backButtonProps?: ButtonProps;
-    onSubmit: (title: string, content: string) => void;
+    onSubmit: Function;
     onCancel?: () => void;
     isSubmitting: boolean;
+    valueTitle?: string;
+    valueContent?: string;
 }
 
-export default function CardSubmit({ title, actionButtonProps, backButtonProps, onSubmit, onCancel, isSubmitting }: CardSubmitProps) {
-    const [postTitle, setPostTitle] = useState("");
-    const [postContent, setPostContent] = useState("");
+export default function CardSubmit({ title, className, actionButtonProps, backButtonProps, onSubmit, onCancel, isSubmitting, valueTitle, valueContent }: CardSubmitProps) {
+    const [postTitle, setPostTitle] = useState(valueTitle || "");
+    const [postContent, setPostContent] = useState(valueContent || "");
+
+    const disableSumbit = postTitle.trim() === "" || postContent.trim() === "" ||
+     (postTitle === valueTitle && postContent === valueContent) || isSubmitting;
 
     return (
-        <div className="w-full h-full flex flex-col border rounded-lg border-card-border p-6">
+        <div className={`flex flex-col border rounded-lg border-card-border p-6 ${className || ''}`}>
+
             <h1>{title}</h1>
             <form
                 className="w-full flex flex-col gap-6 mt-4"
@@ -52,7 +59,7 @@ export default function CardSubmit({ title, actionButtonProps, backButtonProps, 
                     )}
                     <ButtonSubmit
                         className={actionButtonProps.className}
-                        disabled={postTitle.trim() === "" || postContent.trim() === "" || isSubmitting}
+                        disabled={disableSumbit}
                     >
                         {actionButtonProps.text}
                     </ButtonSubmit>

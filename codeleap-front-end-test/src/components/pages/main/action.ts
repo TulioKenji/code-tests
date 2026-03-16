@@ -1,13 +1,18 @@
 'use server';
 
+import { setTimeout } from 'timers/promises';
+
 import { headers, cookies } from "next/headers";
+
+import { Post, postSchema } from "@/schemas/post";
+
 
 interface MainActionProps {
     title: string;
     content: string;
 }
 
-export default async function mainAction({ title, content }: MainActionProps) {
+export async function submitPostAction({ title, content }: MainActionProps) {
     const cookieStore = await cookies();
     const username = cookieStore.get("username")?.value;
     if (!username) {
@@ -36,6 +41,20 @@ export default async function mainAction({ title, content }: MainActionProps) {
         throw response;
     }
 
-    const data = await response.json();
+    const rawData = await response.json();
+    const data = postSchema.parse(rawData);
+
+    return data;
+}
+
+export async function deletePostAction(id: number) {
+
+    const data = await Promise.resolve(setTimeout(500)).then(() => id);
+    return data;
+}
+
+export async function editPostAction(post: Post) {
+
+    const data = await Promise.resolve(setTimeout(500)).then(() => post);
     return data;
 }
